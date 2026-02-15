@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Valentine's Date Night ✦ Ocho Rios</title>
+    <!-- Bootstrap 5 CSS + Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts & custom styles -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Quicksand:wght@300;400;500;600&display=swap');
+       
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+       
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 2rem 1rem;
+        }
+       
+        .container-custom {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+       
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+            animation: fadeIn 1s ease-out;
+        }
+       
+        .header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            margin-bottom: 0.5rem;
+        }
+       
+        .header h1 span {
+            background: linear-gradient(45deg, #FFD700, #FF69B4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+       
+        .header p {
+            font-size: 1.3rem;
+            color: rgba(255,255,255,0.95);
+            letter-spacing: 1px;
+        }
+       
+        .date-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            margin-top: 1rem;
+            font-size: 1.2rem;
+            color: white;
+            border: 1px solid rgba(255,255,255,0.3);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+       
+        .date-badge i {
+            margin-right: 8px;
+            color: #FFD700;
+        }
+       
+        /* panels with glassmorphism */
+        .panel {
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            padding: 2rem 1.5rem;
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);
+            border: 1px solid rgba(255,255,255,0.5);
+            height: fit-content;
+        }
+       
+        .panel h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: #2d3748;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            position: relative;
+        }
+       
+        .panel h2:after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, #FF69B4, #FFD700);
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+       
+        /* VS badge */
+        .vs-badge {
+            background: linear-gradient(135deg, #FF69B4, #FF1493);
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 1.8rem;
+            box-shadow: 0 10px 30px rgba(255,20,147,0.4);
+            border: 3px solid white;
+            animation: pulse 2s infinite;
+            margin: 0 auto;
+        }
+       
+        /* CAROUSEL CARDS */
+        .carousel-card {
+            background: white;
+            border-radius: 24px;
+            padding: 1.2rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: 2px solid transparent;
+            box-shadow: 0 8px 18px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            min-height: 260px;
+            margin: 0 0.2rem;
+        }
+        .carousel-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        .carousel-card.selected {
+            border-color: #FF1493;
+            background: linear-gradient(135deg, #fff0f7, white);
+        }
+        .carousel-card h3 {
+            font-size: 1.3rem;
+            color: #2d3748;
+            margin-bottom: 0.3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .carousel-card h3 span {
+            font-size: 0.8rem;
+            background: #f7fafc;
+            padding: 0.2rem 0.7rem;
+            border-radius: 20px;
+            color: #4a5568;
+        }
+        .location-tag {
+            font-size: 0.85rem;
+            color: #718096;
+            margin-bottom: 0.5rem;
+        }
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            margin: 0.5rem 0;
+        }
+        .tag {
+            background: #f7fafc;
+            padding: 0.25rem 0.7rem;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: #4a5568;
+        }
+        .tag.romantic { background: #fff0f7; color: #FF1493; }
+        .tag.food { background: #fef3c7; color: #b45309; }
+        .hours {
+            font-size: 0.8rem;
+            color: #718096;
+            border-top: 1px dashed #e2e8f0;
+            padding-top: 0.5rem;
+            margin-top: 0.3rem;
+        }
+        .view-btn {
+            background: #FF1493;
+            color: white;
+            border: none;
+            border-radius: 40px;
+            padding: 0.5rem 1rem;
+            font-weight: 600;
+            font-size: 0.85rem;
+            margin-top: 10px;
+            width: 100%;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .view-btn:hover {
+            background: #d10f7a;
+        }
+
+        /* Carousel controls */
+        .carousel-control-prev-icon,
+        .carousel-control-next-icon {
+            background-color: #FF1493;
+            border-radius: 50%;
+            padding: 1.2rem;
+            background-size: 60%;
+        }
+        .carousel-control-prev, .carousel-control-next {
+            width: 8%;
+            opacity: 0.9;
+        }
+        .carousel-indicators [data-bs-target] {
+            background-color: #FF1493;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+        .carousel-inner {
+            border-radius: 20px;
+        }
+        .carousel-item {
+            transition: transform 0.5s ease-in-out;
+        }
+       
+        /* Date preview */
+        .date-preview {
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            padding: 2rem;
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);
+            border: 1px solid rgba(255,255,255,0.5);
+        }
+        .date-preview h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: #2d3748;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        .preview-content {
+            display: grid;
+            grid-template-columns: 1fr 0.3fr 1fr;
+            gap: 1.5rem;
+            align-items: center;
+        }
+        .preview-card {
+            background: linear-gradient(135deg, #faf5ff, white);
+            border-radius: 20px;
+            padding: 1.5rem;
+            text-align: center;
+            border: 2px solid rgba(255,20,147,0.2);
+        }
+        .preview-icon { font-size: 2.5rem; margin-bottom: 0.5rem; }
+        .preview-place { font-size: 1.3rem; font-weight: 600; color: #2d3748; }
+        .preview-location { font-size: 0.9rem; color: #718096; }
+        .preview-heart {
+            font-size: 2rem; color: #FF1493; text-align: center;
+            animation: heartbeat 1.5s ease infinite;
+        }
+       
+        /* Buttons */
+        .action-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+        .btn-primary-custom {
+            background: linear-gradient(135deg, #FF69B4, #FF1493);
+            color: white;
+            box-shadow: 0 10px 25px rgba(255,20,147,0.3);
+            border: none;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+        }
+        .btn-primary-custom:hover {
+            background: linear-gradient(135deg, #ff4da6, #e10e84);
+            color: white;
+        }
+        .btn-secondary-custom {
+            background: white;
+            color: #FF1493;
+            border: 2px solid #FF1493;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+        }
+        .btn-secondary-custom:hover {
+            background: #fff0f7;
+        }
+       
+        /* Floating hearts */
+        .floating-hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        .heart {
+            position: absolute;
+            font-size: 20px;
+            color: rgba(255,255,255,0.3);
+            animation: float 6s linear infinite;
+        }
+
+        /* TikTok Modal Styles */
+        .modal-content-custom {
+            border-radius: 40px;
+            background: white;
+            border: none;
+        }
+        .modal-title-custom {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: #2d3748;
+        }
+        .btn-close-custom {
+            background: #FF1493;
+            opacity: 1;
+            border-radius: 50%;
+            width: 12px;
+            height: 12px;
+        }
+        .modal-body-custom {
+            padding: 1.5rem;
+            text-align: center;
+        }
+        .tiktok-embed {
+            border-radius: 20px !important;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        @keyframes float {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-100px) rotate(720deg); opacity: 0; }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } }
+        @keyframes heartbeat {
+            0% { transform: scale(1); } 30% { transform: scale(1.1); } 50% { transform: scale(1); } 70% { transform: scale(1.05); } 100% { transform: scale(1); }
+        }
+       
+        /* responsiveness */
+        @media (max-width: 768px) {
+            .header h1 { font-size: 2.5rem; }
+            .preview-content { grid-template-columns: 1fr; }
+            .preview-heart { transform: rotate(90deg); }
+            .vs-badge { width: 60px; height: 60px; font-size: 1.4rem; }
+            .action-buttons { flex-direction: column; align-items: stretch; }
+            .carousel-card { min-height: 280px; }
+        }
+
+        .carousel-control-next { right: -15px !important; }
+        .carousel-control-prev { left: -15px !important; }
+        .carousel-indicators { bottom: -15px !important; }
+
+/* Global Audio Button - Floating Music Player */
+.music-player {
+    position: fixed;
+    bottom: 30px;
+    left: 30px;
+    z-index: 1000;
+    background: white;
+    border-radius: 60px;
+    padding: 12px 20px;
+    box-shadow: 0 10px 30px rgba(255,20,147,0.3);
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255,255,255,0.3);
+    transition: all 0.3s ease;
+}
+.music-player:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(255,20,147,0.4);
+}
+.music-btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #FF69B4, #FF1493);
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(255,20,147,0.4);
+}
+.music-btn:hover {
+    transform: scale(1.1);
+}
+.music-btn.playing {
+    animation: pulse 1.5s infinite;
+}
+.music-info {
+    display: flex;
+    flex-direction: column;
+}
+.music-title {
+    font-weight: 600;
+    color: #2d3748;
+    font-size: 0.9rem;
+}
+.music-status {
+    font-size: 0.75rem;
+    color: #718096;
+}
+.volume-control {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-left: 10px;
+}
+.volume-slider {
+    width: 70px;
+    height: 4px;
+    background: #e2e8f0;
+    border-radius: 10px;
+    cursor: pointer;
+    position: relative;
+}
+.volume-level {
+    height: 100%;
+    background: linear-gradient(90deg, #FF69B4, #FF1493);
+    border-radius: 10px;
+    width: 70%;
+}
+
+/* Pulse animation */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .music-player {
+        bottom: 20px;
+        left: 20px;
+        padding: 8px 15px;
+    }
+    .volume-control {
+        display: none; /* Hide volume on mobile for simplicity */
+    }
+}
+    </style>
+</head>
+<body>
+    <!-- floating hearts -->
+    <div class="floating-hearts" id="hearts"></div>
+
+    <div class="container-custom">
+        <!-- header -->
+        <div class="header">
+            <h1>Choose Your <span>Valentine's</span> Date</h1>
+            <p>beach • dine • romance</p>
+            <div class="date-badge">
+                <i>❤️</i> celebrating February 14th <i>❤️</i>
+            </div>
+        </div>
+
+        <!-- Bootstrap grid for carousel panels -->
+        <div class="row g-4 align-items-start">
+            <!-- BEACH panel with carousel -->
+            <div class="col-lg-5">
+                <div class="panel">
+                    <h2>🏖️ Beaches</h2>
+                    <div id="beachCarousel" class="carousel slide" data-bs-ride="false" data-bs-interval="false">
+                        <div class="carousel-inner" id="beachCarouselInner"></div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#beachCarousel" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#beachCarousel" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                        <div class="carousel-indicators" id="beachIndicators"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- VS column -->
+            <div class="col-lg-2 text-center">
+                <div class="vs-badge mx-auto">&</div>
+            </div>
+
+            <!-- RESTAURANT panel with carousel -->
+            <div class="col-lg-5">
+                <div class="panel">
+                    <h2>🍽️ Restaurants</h2>
+                    <div id="restaurantCarousel" class="carousel slide" data-bs-ride="false" data-bs-interval="false">
+                        <div class="carousel-inner" id="restaurantCarouselInner"></div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#restaurantCarousel" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#restaurantCarousel" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                        <div class="carousel-indicators" id="restaurantIndicators"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Date Preview -->
+        <div class="date-preview mt-5">
+            <h2>Your Valentine's Date</h2>
+            <div class="preview-content">
+                <div class="preview-card" id="selectedBeachPreview">
+                    <div class="preview-icon">🏖️</div>
+                    <div class="preview-place" id="beachName">No beach selected</div>
+                    <div class="preview-location" id="beachLocation"></div>
+                </div>
+                <div class="preview-heart">❤️</div>
+                <div class="preview-card" id="selectedRestaurantPreview">
+                    <div class="preview-icon">🍽️</div>
+                    <div class="preview-place" id="restaurantName">No restaurant selected</div>
+                    <div class="preview-location" id="restaurantLocation"></div>
+                </div>
+            </div>
+            <div class="action-buttons">
+                <button class="btn btn-primary-custom" id="confirmDateBtn">✨ Confirm This Date ✨</button>
+                <button class="btn btn-secondary-custom" id="resetBtn">Choose Again</button>
+            </div>
+        </div>
+    </div>
+<!-- Global Audio Player Button - Floating Music Player -->
+<div class="music-player">
+    <button class="music-btn" id="globalAudioBtn">
+        🎵
+    </button>
+    <div class="music-info">
+        <span class="music-title">Background Music</span>
+        <span class="music-status" id="audioStatus">Click to play</span>
+    </div>
+    <div class="volume-control">
+        <span style="font-size: 0.8rem;">🔊</span>
+        <div class="volume-slider" id="globalVolumeSlider">
+            <div class="volume-level" id="globalVolumeLevel" style="width: 70%;"></div>
+        </div>
+    </div>
+</div>
+
+<!-- Hidden Audio Element -->
+<audio id="globalAudioPlayer" loop preload="metadata">
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+    <!-- TIKTOK MODAL - Extracted functionality -->
+    <div class="modal fade" id="tiktokModal" tabindex="-1" >
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content modal-content-custom">
+                <div class="modal-header border-0 position-relative">
+                    <h5 class="modal-title modal-title-custom w-100 text-center" id="tiktokModalLabel">Video Preview</h5>
+                    <button type="button" class="btn-close btn-close-custom position-absolute end-0 me-3" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body modal-body-custom" id="modalEmbedContainer">
+                    <!-- TikTok embed will be inserted here dynamically -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hidden TikTok embeds storage -->
+    <div style="display: none;" id="tiktokStorage">
+        <div id="tiktokPuertoSeco">
+            <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@travelwithtoniann/video/7562739640017358136" data-video-id="7562739640017358136">
+                <section>
+                    <a target="_blank" href="https://www.tiktok.com/@travelwithtoniann">@travelwithtoniann</a>
+                    <p>📍Puerto Seco Beach 🇯🇲</p>
+                    <a target="_blank" href="https://www.tiktok.com/music/original-sound-7562739702722956043">♬ original sound</a>
+                </section>
+            </blockquote>
+        </div>
+       
+        <div id="tiktokOchoRiosBay">
+            <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@explorewithtash_/video/7530107696129920261" data-video-id="7530107696129920261">
+                <section>
+                    <a target="_blank" href="https://www.tiktok.com/@explorewithtash_">@explorewithtash_</a>
+                    <p>Searching for a summer beach spot? Check out Ocho Rios Bay Beach!</p>
+                    <a target="_blank" href="https://www.tiktok.com/music/Story-Book-Riddim-Instrumental-7521129529135663121">♬ Story Book Riddim</a>
+                </section>
+            </blockquote>
+        </div>
+       
+        <div id="tiktokSandTan">
+            <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@renee.explores/video/7512180803984461099" data-video-id="7512180803984461099">
+                <section>
+                    <a target="_blank" href="https://www.tiktok.com/@renee.explores">@renee.explores</a>
+                    <p>Sand and Tan Beach Hotel</p>
+                    <a target="_blank" href="https://www.tiktok.com/music/Tropical-7294992936004454402">♬ Tropical</a>
+                </section>
+            </blockquote>
+        </div>
+       
+        <div id="tiktokMongoose">
+            <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@mongooserestaurant/video/7560164480022220044" data-video-id="7560164480022220044">
+                <section>
+                    <a target="_blank" href="https://www.tiktok.com/@mongooserestaurant">@mongooserestaurant</a>
+                    <p>MONGOOSE RESTAURANT</p>
+                    <a target="_blank" href="https://www.tiktok.com/music/original-sound-7560164507931790136">♬ original sound</a>
+                </section>
+            </blockquote>
+        </div>
+       
+        <div id="tiktokLemontree">
+            <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@kymmyverse/video/7510668829245115653" data-video-id="7510668829245115653">
+                <section>
+                    <a target="_blank" href="https://www.tiktok.com/@kymmyverse">@kymmyverse</a>
+                    <p>Lemon Tree Bistro</p>
+                    <a target="_blank" href="https://www.tiktok.com/music/Pretty-Little-Baby-7146370280443627521">♬ Pretty Little Baby</a>
+                </section>
+            </blockquote>
+        </div>
+       
+        <div id="tiktokPlantation">
+            <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@danielchutckan_/video/7511567565609618693" data-video-id="7511567565609618693">
+                <section>
+                    <a target="_blank" href="https://www.tiktok.com/@danielchutckan_">@danielchutckan_</a>
+                    <p>Plantation Smokehouse</p>
+                    <a target="_blank" href="https://www.tiktok.com/music/Mulla-Wahlahi-7496691781200399159">♬ Mulla Wahlahi</a>
+                </section>
+            </blockquote>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // Floating hearts animation
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 3 + 3 + 's';
+            heart.style.fontSize = Math.random() * 20 + 10 + 'px';
+            document.getElementById('hearts').appendChild(heart);
+            setTimeout(() => heart.remove(), 6000);
+        }
+        setInterval(createHeart, 300);
+
+        // Data definitions for carousels
+        const beachData = [
+            { id: 'puerto-seco', name: 'Puerto Seco Beach', location: 'Discovery Bay, St. Ann', hours: 'Wed-Sun 10am-6pm • $2000 JMD', tags: ['pool', 'water park', 'bars', '💑 couples'], tagClasses: ['romantic', '', '', 'romantic'] },
+            { id: 'ocho-rios-bay', name: 'Ocho Rios Bay Beach', location: 'Ocho Rios (Turtle Beach)', hours: 'Daily 8:30am-4pm • $400 JMD', tags: ['calm waters', 'snorkeling', 'sunset spot'], tagClasses: ['', '', 'romantic'] },
+            { id: 'sand-tan', name: 'Sand and Tan Beach', location: 'White River, Ocho Rios', hours: 'Daycation 12pm-5pm', tags: ['💏 adults-only', 'kayaking', 'private beach'], tagClasses: ['romantic', '', 'romantic'] }
+        ];
+       
+        const restaurantData = [
+            { id: 'mongoose', name: 'Mongoose Jamaica', location: 'Ocho Rios', hours: 'Until 10-11:30pm', tags: ['live music', 'Jamaican fusion', 'evening vibes'], tagClasses: ['', 'food', 'romantic'] },
+            { id: 'lemontree', name: 'LemonTree Bistro', location: 'Ocean View Mall', hours: 'Happy Hour 5-8pm', tags: ['seafood', 'cocktails', '✨ date spot'], tagClasses: ['food', 'romantic', 'romantic'] },
+            { id: 'plantation', name: 'Plantation Smokehouse', location: 'Richmond, St. Ann', hours: 'Until 10-11pm', tags: ['wood-smoked', 'ribs & brisket', 'live music'], tagClasses: ['food', '', ''] }
+        ];
+
+        // Build carousel items and indicators
+        function buildCarousel(containerId, indicatorId, itemsArray, typePrefix) {
+            const inner = document.getElementById(containerId);
+            const indicatorParent = document.getElementById(indicatorId);
+            inner.innerHTML = '';
+            indicatorParent.innerHTML = '';
+
+            itemsArray.forEach((item, idx) => {
+                const isActive = idx === 0 ? 'active' : '';
+               
+                // carousel item
+                const itemDiv = document.createElement('div');
+                itemDiv.className = `carousel-item ${isActive}`;
+                itemDiv.setAttribute('data-type', typePrefix);
+                itemDiv.setAttribute('data-id', item.id);
+                itemDiv.setAttribute('data-name', item.name);
+                itemDiv.setAttribute('data-location', item.location);
+                itemDiv.setAttribute('data-hours', item.hours);
+
+                // Build tags HTML
+                let tagsHtml = '';
+                item.tags.forEach((tag, i) => {
+                    const cls = item.tagClasses[i] ? ` ${item.tagClasses[i]}` : '';
+                    tagsHtml += `<span class="tag${cls}">${tag}</span>`;
+                });
+
+                // Card HTML with view button
+                itemDiv.innerHTML = `
+                    <div class="carousel-card" data-type="${typePrefix}" data-id="${item.id}">
+                        <h3>${item.name} <span>${typePrefix === 'beach' ? 'beach club' : 'restaurant'}</span></h3>
+                        <div class="location-tag">📍 ${item.location}</div>
+                        <div class="tags">${tagsHtml}</div>
+                        <div class="hours">⏰ ${item.hours}</div>
+                        <button class="view-btn"
+                                data-bs-toggle="modal"
+                                data-bs-target="#tiktokModal"
+                                data-modal="${item.id}"
+                                data-place="${item.name}">
+                            📱 Watch TikTok Preview
+                        </button>
+                    </div>
+                `;
+                inner.appendChild(itemDiv);
+
+                // indicator
+                const btn = document.createElement('button');
+                btn.type = 'button';
+                btn.dataset.bsTarget = `#${typePrefix}Carousel`;
+                btn.dataset.bsSlideTo = idx;
+                btn.setAttribute('aria-label', `Slide ${idx + 1}`);
+                if (idx === 0) btn.classList.add('active');
+                indicatorParent.appendChild(btn);
+            });
+        }
+
+        buildCarousel('beachCarouselInner', 'beachIndicators', beachData, 'beach');
+        buildCarousel('restaurantCarouselInner', 'restaurantIndicators', restaurantData, 'restaurant');
+
+        // Selection state
+        let selectedBeach = null;
+        let selectedRestaurant = null;
+
+        function updatePreview() {
+            document.getElementById('beachName').innerText = selectedBeach ? selectedBeach.name : 'No beach selected';
+            document.getElementById('beachLocation').innerText = selectedBeach ? selectedBeach.location : '';
+            document.getElementById('restaurantName').innerText = selectedRestaurant ? selectedRestaurant.name : 'No restaurant selected';
+            document.getElementById('restaurantLocation').innerText = selectedRestaurant ? selectedRestaurant.location : '';
+        }
+
+        // Beach selection
+        document.getElementById('beachCarouselInner').addEventListener('click', function(e) {
+            const card = e.target.closest('.carousel-card');
+            if (!card) return;
+            if (e.target.classList.contains('view-btn')) return;
+
+            document.querySelectorAll('#beachCarouselInner .carousel-card').forEach(c => c.classList.remove('selected'));
+            card.classList.add('selected');
+
+            const itemDiv = card.closest('.carousel-item');
+            if (itemDiv) {
+                selectedBeach = {
+                    id: itemDiv.dataset.id,
+                    name: itemDiv.dataset.name,
+                    location: itemDiv.dataset.location,
+                    hours: itemDiv.dataset.hours
+                };
+                updatePreview();
+            }
+        });
+
+        // Restaurant selection
+        document.getElementById('restaurantCarouselInner').addEventListener('click', function(e) {
+            const card = e.target.closest('.carousel-card');
+            if (!card) return;
+            if (e.target.classList.contains('view-btn')) return;
+
+            document.querySelectorAll('#restaurantCarouselInner .carousel-card').forEach(c => c.classList.remove('selected'));
+            card.classList.add('selected');
+
+            const itemDiv = card.closest('.carousel-item');
+            if (itemDiv) {
+                selectedRestaurant = {
+                    id: itemDiv.dataset.id,
+                    name: itemDiv.dataset.name,
+                    location: itemDiv.dataset.location,
+                    hours: itemDiv.dataset.hours
+                };
+                updatePreview();
+            }
+        });
+
+        // Reset button
+        document.getElementById('resetBtn').addEventListener('click', function() {
+            document.querySelectorAll('#beachCarouselInner .carousel-card').forEach(c => c.classList.remove('selected'));
+            document.querySelectorAll('#restaurantCarouselInner .carousel-card').forEach(c => c.classList.remove('selected'));
+            selectedBeach = null;
+            selectedRestaurant = null;
+            updatePreview();
+        });
+
+        // Confirm date button
+        document.getElementById('confirmDateBtn').addEventListener('click', function() {
+            if (!selectedBeach || !selectedRestaurant) {
+                alert('Please select both a beach and a restaurant for your Valentine\'s date! ❤️');
+                return;
+            }
+            alert(`✨ Happy Valentine's Day! ✨\n\nYou've chosen:\n🏖️ ${selectedBeach.name}\n🍽️ ${selectedRestaurant.name}\n\nCelebrating February 14th! ❤️`);
+        });
+
+        // ============ TIKTOK MODAL FUNCTIONALITY ============
+        const tiktokMap = {
+            'puerto-seco': 'tiktokPuertoSeco',
+            'ocho-rios-bay': 'tiktokOchoRiosBay',
+            'sand-tan': 'tiktokSandTan',
+            'mongoose': 'tiktokMongoose',
+            'lemontree': 'tiktokLemontree',
+            'plantation': 'tiktokPlantation'
+        };
+
+        const modalEmbed = document.getElementById('modalEmbedContainer');
+        const modalLabel = document.getElementById('tiktokModalLabel');
+
+        // Function to load TikTok embed script
+        function loadTikTokEmbed() {
+            return new Promise((resolve, reject) => {
+                // Check if TikTok embed script already exists
+                if (window.tiktok && window.tiktok.reload) {
+                    resolve();
+                    return;
+                }
+                
+                // Create new script element
+                const script = document.createElement('script');
+                script.src = 'https://www.tiktok.com/embed.js';
+                script.async = true;
+                
+                script.onload = () => {
+                    // Give it a moment to initialize
+                    setTimeout(resolve, 500);
+                };
+                script.onerror = reject;
+                
+                document.body.appendChild(script);
+            });
+        }
+
+        // Handle modal show event
+        document.getElementById('tiktokModal').addEventListener('show.bs.modal', async function(event) {
+            const button = event.relatedTarget;
+            if (!button) return;
+
+            const placeId = button.getAttribute('data-modal');
+            const placeName = button.getAttribute('data-place');
+           
+            // Update modal title
+            if (modalLabel) {
+                modalLabel.textContent = placeName || 'Video Preview';
+            }
+
+            // Get the corresponding TikTok embed
+            const hiddenId = tiktokMap[placeId];
+            if (!hiddenId) return;
+
+            const sourceDiv = document.getElementById(hiddenId);
+            const blockquote = sourceDiv?.querySelector('blockquote');
+            if (!blockquote) return;
+
+            // Clear previous content
+            modalEmbed.innerHTML = '';
+            
+            // Clone the blockquote
+            const newBlock = blockquote.cloneNode(true);
+            
+            // Add a wrapper div with a unique ID to help with initialization
+            const wrapperId = 'tiktok-wrapper-' + Date.now();
+            const wrapper = document.createElement('div');
+            wrapper.id = wrapperId;
+            wrapper.appendChild(newBlock);
+            modalEmbed.appendChild(wrapper);
+
+            try {
+                // Load TikTok embed script if needed
+                await loadTikTokEmbed();
+                
+                // Reload TikTok embeds
+                if (window.tiktok && window.tiktok.reload) {
+                    setTimeout(() => {
+                        window.tiktok.reload();
+                    }, 200);
+                } else {
+                    // Fallback: try to re-initialize by removing and re-adding the script
+                    const existingScript = document.querySelector('script[src="https://www.tiktok.com/embed.js"]');
+                    if (existingScript) {
+                        existingScript.remove();
+                        const newScript = document.createElement('script');
+                        newScript.src = 'https://www.tiktok.com/embed.js';
+                        newScript.async = true;
+                        document.body.appendChild(newScript);
+                    }
+                }
+            } catch (error) {
+                console.error('Failed to load TikTok embed:', error);
+                modalEmbed.innerHTML = '<p class="text-danger">Failed to load video. Please try again.</p>';
+            }
+        });
+
+        // Clean up when modal is hidden (stops video audio)
+        document.getElementById('tiktokModal').addEventListener('hidden.bs.modal', function() {
+            modalEmbed.innerHTML = '';
+        });
+
+        // Initial preview update
+        updatePreview();
+
+// ============ GLOBAL AUDIO PLAYER FUNCTIONALITY ============
+// Get audio elements
+const globalAudio = document.getElementById('globalAudioPlayer');
+const globalAudioBtn = document.getElementById('globalAudioBtn');
+const audioStatus = document.getElementById('audioStatus');
+const globalVolumeSlider = document.getElementById('globalVolumeSlider');
+const globalVolumeLevel = document.getElementById('globalVolumeLevel');
+
+// State
+let isAudioPlaying = false;
+
+// Play/Pause global audio
+globalAudioBtn.addEventListener('click', function() {
+    if (isAudioPlaying) {
+        globalAudio.pause();
+        globalAudioBtn.textContent = '🎵';
+        globalAudioBtn.classList.remove('playing');
+        audioStatus.textContent = 'Click to play';
+        isAudioPlaying = false;
+    } else {
+        // Use a promise to handle autoplay restrictions
+        const playPromise = globalAudio.play();
+       
+        if (playPromise !== undefined) {
+            playPromise.then(() => {
+                // Playback started successfully
+                globalAudioBtn.textContent = '⏸️';
+                globalAudioBtn.classList.add('playing');
+                audioStatus.textContent = 'Now playing';
+                isAudioPlaying = true;
+            }).catch(error => {
+                // Autoplay was prevented
+                console.log('Playback prevented:', error);
+                audioStatus.textContent = 'Click to play';
+                alert('Please interact with the page first to play audio.');
+            });
+        }
+    }
+});
+
+// Volume control
+globalVolumeSlider.addEventListener('click', function(e) {
+    const rect = e.target.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const width = rect.width;
+    const percent = Math.max(0, Math.min(1, x / width));
+   
+    globalAudio.volume = percent;
+    globalVolumeLevel.style.width = (percent * 100) + '%';
+});
+
+// Update volume level display when volume changes
+globalAudio.addEventListener('volumechange', function() {
+    const percent = globalAudio.volume * 100;
+    globalVolumeLevel.style.width = percent + '%';
+});
+
+// Set initial volume
+globalAudio.volume = 0.7;
+
+// Optional: Save audio state when page is hidden/shown
+document.addEventListener('visibilitychange', function() {
+    if (document.hidden && isAudioPlaying) {
+        // Optionally pause when tab is hidden
+        // globalAudio.pause();
+    }
+});
+
+// Optional: Handle audio ending (loop is set, so this may not trigger)
+globalAudio.addEventListener('ended', function() {
+    // Reset button if not looping
+    globalAudioBtn.textContent = '🎵';
+    globalAudioBtn.classList.remove('playing');
+    audioStatus.textContent = 'Click to play';
+    isAudioPlaying = false;
+});
+
+// Optional: Handle errors
+globalAudio.addEventListener('error', function(e) {
+    console.error('Audio error:', e);
+    audioStatus.textContent = 'Audio unavailable';
+    globalAudioBtn.disabled = true;
+});
+
+// ============ INTEGRATION WITH TIKTOK MODAL (Optional) ============
+document.getElementById('tiktokModal').addEventListener('show.bs.modal', function() {
+    if (isAudioPlaying) {
+        globalAudio.pause();
+        globalAudioBtn.textContent = '🎵';
+        globalAudioBtn.classList.remove('playing');
+        audioStatus.textContent = 'Paused';
+        isAudioPlaying = false;
+    }
+});
+
+    </script>
+</body>
+</html>
